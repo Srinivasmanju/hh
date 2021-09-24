@@ -1,0 +1,90 @@
+
+//Insertion
+<script>
+var trainer = {
+name: 'teja',
+skills: 'nodejs,reactj,.net,javascript',
+tags: ['reactjs','nodejs','css3','sql'],
+likes:9000
+}
+console.log(trainer);
+</script> 
+--use db
+use databasename
+--show dbs (shows the list of details)
+--creation of collection
+db.createCollection("trainers",{capped:true, autoIndexId:true, size: 6142800, max:1000})
+
+
+--insertion records into collection
+db.trainers.insert({
+... name: 'tharun',
+... skills: 'nodejs,mongo,javascript',
+... tags: ['reactjs','html5','css3','sql'],
+... likes:9000
+... })
+
+--Trainer name is equal to teja
+db.trainers.find({name:'teja'})
+
+--Trainer name is equal to srinivas
+db.trainers.find({name:'srinivas'})
+
+--Trainer name is equal to teja in formatted output
+ db.trainers.find({name:'teja'}).pretty()
+
+--Trainer likes = 7000
+db.trainers.find({likes:7000}).pretty()
+
+
+--Trainer likes >5000
+db.trainers.find({likes:{$gt:5000}}).pretty()
+
+--Trainer likes <5000
+db.trainers.find({likes:{$lt:5000}}).pretty()
+--Trainer likes >=5000
+db.trainers.find({likes:{$gte:5000}}).pretty()
+
+--Trainer likes <=5000
+db.trainers.find({likes:{$lte:5000}}).pretty()
+
+
+--Trainer whos tags are html or css
+ db.trainers.find({tags:{$in:['html5','css3']}}).pretty()
+
+--Trainer whos tags are java or javaScript
+db.trainers.find({tags:{$in:['java','javascript']}}).pretty()
+
+--Trainers whos tags are Java or Html, sort by name ascending
+ db.trainers.find({tags:{$in:['java','javascript']}}).sort({name:1}).pretty()
+
+--Trainers whos tags are Java or Html, sort by name descending
+ db.trainers.find({tags:{$in:['java','javascript']}}).sort({name:-1}).pretty()
+
+--Trainers whos likes >=5000 and =<7000
+ db.trainers.find({likes:{$gte:5000,$lte:7000}).pretty()
+
+--Trainer whos tags are HTML5 and CSS3
+db.trainers.find({tags:{$in:['html5','css3']}}).pretty() //wrong
+
+--Update record
+--Update likes from 6000 to 6010
+db.trainers.update({likes:6000}, {$set:{likes:6010}})
+
+--To Display all the data in the table
+ db.trainers.find({})
+
+--Trainers whos likes >5000 and skills is html5
+db.trainers.find({$and:[{tags:'html5'},{likes:{$gt:5000}}]}).pretty()
+
+--cursor ( is used to search for document in collection, the result returns
+ a pointer to the collection of document returned.
+var mycur= db.trainers.find({tags:'Html'})
+mycur.forEach(printjson)
+
+
+db.trainers.update({tags:'html'},{$set:{tags:'html5'}})
+
+
+
+
