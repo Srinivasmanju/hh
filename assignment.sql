@@ -201,53 +201,94 @@ select customerid from customer where customername='goutham')));
 
 
 -- 35. List all the phones which Amrutha orderd for in the 2014
-select * from orderd where customerid in (
-select customerid from customer where customername='goutham');
-select * from customer
-
+select * from product where pid in
+(
+select pid from orderitem where orderid IN
+(
+select orderid from orderd where customerid =
+(
+select customerid from customer where customername='Amrutha' or orderdate like '2014%'
+)
+)
+);
 
 
 -- 36. List all the customer who have not bought any product
-
-
+select * from product where pid in
+(
+select pid from 
+);
 
 
 -- 37. List Fav phones of Bangalorean
-
+select * from product where pid IN
+(
+select pid from orderd where customerid IN
+(
+select customerid from customeraddress where city='Bangalore'
+)
+);
 
 
 -- 38. List all the products which were sold in the year 2013
-
+select * from product where pid IN
+(
+select pid from orderitem where orderid IN
+(
+select orderid from orderd where orderdate IN('2013-01-01',2013-12-31)
+)
+);
 
 
 -- 39. List all the Nokia phones orderd by 'Ravi'
-
+select productname from product where pid IN
+(
+select pid from orderitem where orderid IN
+(
+select orderid from orderd where customerid IN
+(
+select customerid from customer where customername = 'Ravi'
+)
+)
+);
 
 
 -- 40. List all the phones with its company name
-
+select p.productname,c.companyname from product p 
+inner join company c on
+c.companyid=p.companyid;
 
 
 -- 41. List companyid, companyname, productname, product price of all products
-
+select c.companyid,c.companyname,p.productname,p.price from product p
+inner join company c on
+c.companyid=p.companyid;
 
 
 -- 42. List customer name, stname and city of all the customer.
-
+select c.customername,ca.stname,ca.city from customer c
+inner join customeraddress ca on
+c.customerid=ca.customerid;
 
 
 -- 43. List customer name and customer city of all the customer
 -- who have never bought any product
-
+select c.customername,ca.city from customer c
+inner join customeraddress ca on
+c.customerid=ca.customerid having not in ;
 
 
 -- 44. List Customer id, customer name, orderdate, of all the orders
-
+select c.customerid,c.customername,o.orderdate from customer c
+inner join orderd o on
+c.customerid=o.customerid;
 
 
 -- 45. List Customer id, customer name, orderdate, company and
 -- product name with qty, price of all the orders
-
+select c.customerid,c.customername,o.orderdate,co.companyname,p.productname,oi.qty,p.price from customer c,
+full join orderd o on 
+c.customerid=o.customerid;
 
 
 -- 46. List Customer id, customer name, orderdate, company and
@@ -322,7 +363,6 @@ which were ordered in the year 2014
 
 
 /* 61. Display all phones which are sold with the no. of quantity */
-
 
 
 /* 62. Name of the top priced phone */
