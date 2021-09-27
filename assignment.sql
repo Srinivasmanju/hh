@@ -286,26 +286,61 @@ c.customerid=o.customerid;
 
 -- 45. List Customer id, customer name, orderdate, company and
 -- product name with qty, price of all the orders
-select c.customerid,c.customername,o.orderdate,co.companyname,p.productname,oi.qty,p.price from customer c,
-full join orderd o on 
-c.customerid=o.customerid;
-
+select c.customerid,c.customername,o.orderdate,c1.companyname,p.productname,o1.qty,p.price from customer c
+inner join  orderd o on
+c.customerid=o.customerid
+inner join orderitem o1 on
+o1.orderid=o.orderid
+inner join product p on
+p.pid=o1.pid
+inner join company c1 on
+c1.companyid=p.companyid
 
 -- 46. List Customer id, customer name, orderdate, company and
 -- product name with qty, price and amount of all the orders
 -- where amount is qty*price
+select c.customerid,c.customername,o.orderdate,c1.companyname,p.productname,o1.qty,(qty*price) as amount from customer c
+inner join  orderd o on
+c.customerid=o.customerid
+inner join orderitem o1 on
+o1.orderid=o.orderid
+inner join product p on
+p.pid=o1.pid
+inner join company c1 on
+c1.companyid=p.companyid
 
 
 
 /* 47. List Customer id, customer name, orderdate, company and
 product name with qty, price and amount of all the orders
 where amount > 50,000 (amount is qty*price) */
+select c.customerid,c.customername,o.orderdate,c1.companyname,p.productname,o1.qty,(qty*price) as amount from customer c
+inner join  orderd o on
+c.customerid=o.customerid
+inner join orderitem o1 on
+o1.orderid=o.orderid
+inner join product p on
+p.pid=o1.pid
+inner join company c1 on
+c1.companyid=p.companyid
+where amount<50000;
 
 
 
 
 /* 48. List customerid, customername, city, companyname, productname,
 qty, price and amount of all the products orderd */
+select c.customerid,c.customername,ca.city,c1.companyname,p.productname,o1.qty,p.price,(o1.qty*p.price) as amount from customer c
+inner join customeraddress ca on
+c.customerid=ca.customerid
+inner join orderd o on
+ca.customerid=o.customerid
+inner join orderitem o1 on
+o.orderid=o.orderid
+inner join product p on
+p.pid=o1.pid
+inner join company c1 on
+c1.companyid=p.companyid;
 
 
 
@@ -314,27 +349,44 @@ qty, price and amount of all the products orderd */
 customer address details for all orders
 which were ordered in the year 2014
 */
+select * from customer c
+inner join customeraddress ca on
+c.customerid=ca.customerid
+inner join orderd o on
+o.customerid= ca.customerid
+inner join orderitem o1 on
+o.orderid=o1.orderid
+inner join product p on 
+o1.pid=p.pid
+inner join company c1 on
+p.companyid=c1.companyid
+having o.orderdate between  '2014-01-01' and '2014-12-31';
 
 
 
 
 /* 50. Update amount of order item */
-
+update product set price=15000 where productname='Nokia X2';
+select productname,price from product where productname='Nokia X2';
 
 
 /* 51. Get the total sales based on orderid */
+select count(orderid) as total_sales from orderd;
 
 
 
 /* 52. Get the total sales based on given month */
-
+select month(orderdate) as month , count(orderid) as total_sales from orderd where month(orderdate)='07';
 
 
 /* 53. Get the total sales based on year */
+select year(orderdate) as year , count(orderid) as total_sales from orderd where year(orderdate)='2014';
+
 
 
 
 /* 54. Get the total sales based on month and year */
+select month(orderdate) as month ,year(orderdate) as year, count(orderid) as total_sales from orderd;
 
 
 
@@ -343,11 +395,11 @@ which were ordered in the year 2014
 
 
 /* 56. Total sales based on company */
-
+select companyname,count(companyid) as total_sales from company;
 
 
 /* 57. Display top 3 sold mobiles */
-
+select productname,sum(price) from product  group by productname order by sum(price) desc limit 3;
 
 
 /* 58. Top 3 customers based on billing amount */
@@ -363,8 +415,11 @@ which were ordered in the year 2014
 
 
 /* 61. Display all phones which are sold with the no. of quantity */
+select p.productname,o.qty from orderitem o 
+inner join product p on
+p.pid=o.pid;
 
 
 /* 62. Name of the top priced phone */
-select * from product where price=(select max(price) from product);
+select max(price) as top_priced_phone,productname from product;
 
