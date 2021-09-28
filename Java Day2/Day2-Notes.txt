@@ -1,0 +1,518 @@
+/*
+// control statement
+//if statement
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        System.out.println("hello");
+        System.out.println("enter your age:");
+        Scanner sc= new Scanner(System.in);
+        int age= sc.nextInt();
+        if(age>=18) {
+            System.out.println("Eligible to vote");
+        }
+        System.out.println("Not Eligible to vote");
+    }
+}
+*/
+
+/*
+
+//if Else statement
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        System.out.println("enter your age:");
+        Scanner sc= new Scanner(System.in);
+        int age= sc.nextInt();
+        System.out.println(age>=18);
+        if(age>=18) {
+            System.out.println("Eligible to vote");
+        }
+        else {
+            System.out.println("Not Eligible to vote");
+        }
+    }
+}
+*/
+
+
+/*
+//if-elseif statement
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        System.out.println("enter your age:");
+        Scanner sc= new Scanner(System.in);
+        int age= sc.nextInt();
+        if(age>=18) {
+            System.out.println("Eligible to vote");
+        }
+        else if(age>=10){
+            System.out.println("Eligible for school , wait for 8years");
+        }
+        else {
+            System.out.println("Not Eligible to vote");
+        }
+    }
+}
+*/
+
+/*
+//Nested if statement
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        System.out.println("enter your age:");
+        Scanner sc= new Scanner(System.in);
+        int age= sc.nextInt();
+        if(age>=18) {
+            if(age<=22) {
+                System.out.println("Eligible to vote");
+            }
+            else {
+                System.out.println("Marraiage");
+            }
+        }
+        else if(age>=10){
+            System.out.println("Eligible for school , wait for 8years");
+        }
+        else {
+            System.out.println("Not Eligible to vote");
+        }
+    }
+}
+
+ */
+
+/*
+
+//switch statement
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        System.out.println("enter your age:");
+        Scanner sc= new Scanner(System.in);
+        int age= sc.nextInt();
+        switch (age){
+            case 18:
+                System.out.println("Eligible to vote");
+                break;
+            case 22:
+                System.out.println("Eligible to marraiage");
+                break;
+            case 10:
+                System.out.println("not Eligible Go to school");
+                break;
+            default:
+                System.out.println("not Eligible");
+        }
+    }
+}
+
+ */
+
+/*
+//loop Statements
+// 3 types : for, do while , while do
+// for loop
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        int age,i;
+        for( i=0;i<=5;i++) {
+            System.out.println("enter your age:");
+            Scanner sc = new Scanner(System.in);
+            age = sc.nextInt();
+        }
+
+
+    }
+}
+*/
+
+/*
+// while loop
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        int i=0;
+        while(i<5){
+            System.out.println("hello:");
+                   i++;
+        }
+
+
+    }
+}
+
+ */
+
+/*
+// Do while loop
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("hello");
+        int i=0;
+        do{
+
+            System.out.println("hello:");
+            i++;
+
+        }while (i<5);
+
+
+    }
+}
+*/
+// Jump statement
+//2types : break, continue
+/*
+//break
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        for(int i=0;i<5;i++) {
+
+            System.out.println("hello");
+            break;
+
+        }
+
+    }
+}
+*/
+
+/*
+//Array
+// collection of similar type of elements
+//stored in contiguous memory location
+// Java object
+//Array reference type and object array , fixed size
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        int [] array = new int[100];
+        //memory [memory block] 1000,1050
+
+
+    }
+}
+*/
+/*
+
+//Assignment
+// student - student names in array, options : input,output,search,update
+package com.company;
+import java.util.*;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String arr[] = new String[2];
+        Scanner in = new Scanner(System.in);
+        boolean y = true;
+        do {
+            System.out.println("1>Enter to add student name in list\n2> To Update Student name\n3> To search student");
+            System.out.println("4> To Display list\n5> Exit");
+            System.out.println("enter your choice");
+            int choice = in.nextInt();
+            switch (choice) {
+                case 1:
+                    for (int i = 0; i <= arr.length - 1; i++) {
+                        System.out.println("enter the Student name");
+                        arr[i] = in.next();
+                    }
+                       break;
+
+                case 2:
+                    System.out.println("Enter the name you want to update");
+                    Scanner sc  = new Scanner(System.in);
+                    String key = sc.next();
+                    int i = 0;
+                    for(i = 0;i< 2;i++){
+                        if(arr[i].equals(key)){
+                            System.out.println("Enter the new name");
+                            String newname = sc.next();
+                            arr[i] = newname;
+                            System.out.println("Updation successful");
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Enter the name to be searched");
+                    String s = in.next();
+                    for ( i = 0; i < arr.length - 1; i++) {
+                        if (s.equals(arr[i])) {
+                            System.out.println("Name is already Present");
+                        } else {
+                            System.out.println("not present");
+                        }
+                    }
+                      break;
+                case 4:
+                    for (i = 0; i <= arr.length - 1; i++) {
+                        System.out.println(arr[i]);
+
+                    }
+
+                    break;
+                case 5:
+                    System.exit(5);
+
+                default:
+                    System.out.println("bad input");
+                    break;
+            }
+            System.out.println("want to process more? y/n");
+            String x = in.next();
+            char ch = x.charAt(0);
+            if (ch == 'n')
+                y = false;
+        }
+        while (y != false);
+    }
+
+}
+
+
+
+/*
+
+package com.company;
+//import java.util.Random;
+
+import java.util.Scanner;
+
+public class Main {
+    static String[] names = new String[1001];
+    static int n;
+    public static void input(){
+        System.out.println("Enter the number of elements that you want to input");
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+
+        for(int i = 0; i<n;i++){
+            names[i] = sc.next();
+        }
+        System.out.println("Insertion Successful");
+
+    }
+    public static void output(){
+        if(n==0){
+            System.out.println("ARRAY is Empty");
+        }
+        else{
+            for(int i =0;i<n;i++){
+                System.out.println(names[i]);
+            }
+        }
+    }
+    public static void search(){
+        System.out.println("Enter the key");
+        Scanner sc  = new Scanner(System.in);
+        String key = sc.nextLine();
+        int i = 0;
+        for(i = 0;i< n;i++){
+            //System.out.println(names[i].equals(key));
+            if(names[i].equals(key)){
+                System.out.println("The name you're searching is found at "+(i+1)+"th position");
+            }
+        }
+
+
+    }
+    public static void update(){
+        System.out.println("Enter the name you want to update");
+        Scanner sc  = new Scanner(System.in);
+        String key = sc.next();
+        int i = 0;
+        for(i = 0;i< n;i++){
+            if(names[i].equals(key)){
+                System.out.println("Enter the new name");
+                String newname = sc.next();
+                names[i] = newname;
+                System.out.println("Updation successful");
+            }
+        }
+
+    }
+    public static void main(String[] args){
+
+        while(true){
+            System.out.println("Enter the options. We are trying array operations");
+            System.out.println("1)Input\n2)Output\n3)Search\n4)Update\n5)Exit");
+            Scanner sc = new Scanner(System.in);
+            int c = sc.nextInt();
+            switch(c){
+                case 1: input();
+                    break;
+                case 2: output();
+                    break;
+                case 3: search();
+                    break;
+                case 4:update();
+                    break;
+                case 5:System.exit(0);
+                default:System.out.println("Wrong input");
+            }
+
+
+        }
+    }
+}
+*/
+//class-Blue print,Logical entity
+//static, reference
+/*
+package com.company;
+import java.util.*;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+       /* String name;
+        int age;
+        String Eid;
+        String company;
+        */
+        /*
+        static int number =0;
+        int age=0;
+        Main object1= new Main();
+        object1.number=1;
+        Main object2= new Main();
+        System.out.println(object2.number);
+
+        //Polymorphism : ability of an object to take many forms.
+        System.out.println(12);
+    }
+}
+*/
+
+//simple calculator
+package com.company;
+        import java.util.*;
+        import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+                // Declare variables
+                double num1=0.0, num2=0.0,num3=0.0,num4=0.0;
+                char operator='\0';
+
+                // create Scanner class object to
+                // read inputs
+                Scanner scan = new Scanner(System.in);
+                System.out.print("Enter numbers: ");
+                num1 = scan.nextDouble();
+                num2 = scan.nextDouble();
+                num3 = scan.nextDouble();
+                num4 = scan.nextDouble();
+
+
+                // read operator
+                System.out.println("Available Operators"
+                        + "are::  (+ - * / % ^)");
+                System.out.print("Enter operator: ");
+                operator = scan.next().charAt(0);
+
+                // switch-case statements
+                switch(operator) {
+
+                    case '+':
+                        System.out.println("Result = "+ (num1+num2+num3+num4));
+                        break;
+
+                    case '-':
+                        System.out.println("Result = "+ (num1-num2-num3-num4));
+                        break;
+
+                    case '*':
+                        System.out.println("Result = "+ (num1*num2*num3*num4));
+                        break;
+
+                    case '/':
+                        System.out.println("Result = "+ (num1/num2));
+                        break;
+
+                    case '%':
+                        System.out.println("Result = "+ (num1%num2));
+                        break;
+
+                    case '^':
+                        System.out.println("Result = "+
+                                Math.pow(num1,num2));
+                        break;
+
+                    default:
+                        System.out.println("Invalid operator");
+                } // end of switch-case
+
+                // close Scanner class object
+                scan.close();
+
+            }
+        }
+
